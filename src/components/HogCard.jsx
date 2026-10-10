@@ -1,17 +1,28 @@
+import { useState } from "react";
+
 function HogCard({ hog }) {
-    const imageName = hog.name.toLowerCase().replaceAll(" ", "_");
+  const [isFlipped, setIsFlipped] = useState(false);
+  const imageName = hog.name.toLowerCase().replaceAll(" ", "_");
+
   return (
     <div className="ui card" aria-label="hog card">
-      <div className="image">
-        <img
-          src={`/images/${imageName}.jpg`}
-          alt={hog.name}
-        />
+      <div className="image" onClick={() => setIsFlipped(!isFlipped)}>
+        <img src={`/images/${imageName}.jpg`} alt={hog.name} />
       </div>
 
-      <div className="content">
-        <h3>{hog.name}</h3>
-      </div>
+      {isFlipped ? (
+        <div className="content">
+          <h3>{hog.name}</h3>
+          <p>Specialty: {hog.specialty}</p>
+          <p>Weight: {hog.weight} lbs</p>
+          <p>Greased: {hog.greased ? "Yes" : "No"}</p>
+          <p>Highest Medal Achieved: {hog["highest medal achieved"]}</p>
+        </div>
+      ) : (
+        <div className="content">
+          <h3>{hog.name}</h3>
+        </div>
+      )}
     </div>
   );
 }
