@@ -2,12 +2,11 @@ import { useState } from "react";
 
 function HogCard({ hog, hideHog }) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const imageName = hog.name.toLowerCase().replaceAll(" ", "_");
 
   return (
     <div className="ui card" aria-label="hog card">
       <div className="image" onClick={() => setIsFlipped(!isFlipped)}>
-        <img src={`/images/${imageName}.jpg`} alt={hog.name} />
+        <img src={hog.name} alt={`Photo of ${hog.name}`} />
       </div>
 
       {isFlipped ? (

@@ -8,21 +8,20 @@ function App() {
   const [hogs, setHogs] = useState(hogsData);
 
   function hideHog(hogName) {
-	const updatedHogs = hogs.filter((hog) => hog.name !== hogName);
-	setHogs(updatedHogs);
+    const updatedHogs = hogs.filter((hog) => hog.name !== hogName);
+    setHogs(updatedHogs);
   }
-
-  <div className="ui grid container">
-    {hogs.map((hog) => (
-      <div className="ui eight wide column" key={hog.name}>
-        <HogCard hog={hog} hideHog={hideHog} />
-      </div>
-    ))}
-  </div>;
 
   return (
     <div className="App">
       <Nav />
+      <div className="ui grid container">
+        {hogs.map((hog) => (
+          <div className="ui eight wide column" key={hog.name}>
+            <HogCard hog={hog} hideHog={hideHog} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
