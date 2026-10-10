@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function HogCard({ hog }) {
+function HogCard({ hog, hideHog }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const imageName = hog.name.toLowerCase().replaceAll(" ", "_");
 
@@ -23,6 +23,8 @@ function HogCard({ hog }) {
           <h3>{hog.name}</h3>
         </div>
       )}
+
+      <button className="ui button" onClick={() => hideHog(hog.name)}> Hide Me </button>
     </div>
   );
 }
