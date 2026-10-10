@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Nav from "./Nav";
 import HogCard from "./HogCard";
+import HogForm from "./HogForm";
 
 import hogsData from "../porkers_data";
 
@@ -8,6 +9,10 @@ function App() {
   const [hogs, setHogs] = useState(hogsData);
   const [greasedOnly, setGreasedOnly] = useState(false);
   const [sortBy, setSortBy] = useState("");
+
+  function addHog(newHog) {
+	setHogs((previousHogs) => [...previousHogs, newHog]);
+  }
 
   function hideHog(hogName) {
     const updatedHogs = hogs.filter((hog) => hog.name !== hogName);
@@ -29,6 +34,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
+	  <HogForm addHog={addHog} />
       <div className="ui form">
         <div className="field">
           <label htmlFor="greased-filter">Greased Pigs Only?</label>
